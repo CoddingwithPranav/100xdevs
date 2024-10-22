@@ -5,7 +5,16 @@
 */
 
 function isAnagram(str1, str2) {
-
+ let isAnagram = false;
+ if(str1.length === str2.length){
+    str1 = str1.toLowerCase().split('').sort()
+    str2 = str2.toLowerCase().split('').sort()
+    if(str1.join() === str2.join()){
+      isAnagram = true;
+    }
+    
+ }
+return isAnagram;
 }
 
 module.exports = isAnagram;
