@@ -16,6 +16,46 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  
+  constructor(value= 0){
+    this.result = value
+  }
+  add(value){
+    this.result+=value;
+  }
+  subtract(value){
+    this.result-=value;
+  }
+  multiply(value){
+    this.result*=value;
+  }
+  divide(value){
+    if(value == 0){
+      throw new Error('Cannot divide by zero')
+    }
+    this.result/=value;
+  }
+  clear(){
+    this.result = 0;
+  }
+  getResult(){
+    return this.result;
+  }
+  calculate(expression) {
+    if ((/(?=.*[a-zA-Z])(?=.*[!@#$^&,?":{}|<>])/.test(expression))) {
+      throw new Error("Invalid input: contains non-numerical characters.");
+   }else{
+     if(eval(expression)=='Infinity'){
+      throw new Error("Infinity")
+    }else{
+     return eval(expression)
+    }
+   }
 
-module.exports = Calculator;
+}
+}
+const calc = new Calculator();
+console.log(calc.calculate('2 + 3 * 4'))
+
+// module.exports = Calculator;
